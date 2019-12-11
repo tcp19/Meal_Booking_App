@@ -1,0 +1,40 @@
+{
+  "name": "meal_booking_app",
+  "version": "1.0.0",
+  "description": "Book-A-Meal is an application that allows customers to make food orders and helps the food",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon --exec babel-node ./src/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Teencodeprojects/Meal_Booking_App.git"
+  },
+  "keywords": [
+    "meal",
+    "order",
+    "book",
+    "cook"
+  ],
+  "author": "Teencode",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Teencodeprojects/Meal_Booking_App/issues"
+  },
+  "homepage": "https://github.com/Teencodeprojects/Meal_Booking_App#readme",
+  "dependencies": {
+    "@babel/preset-env": "^7.7.6",
+    "@babel/runtime": "^7.7.6",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.7.5",
+    "@babel/core": "^7.7.5",
+    "@babel/node": "^7.7.4",
+    "@babel/plugin-transform-runtime": "^7.7.6",
+    "@babel/register": "^7.7.4",
+    "nodemon": "^2.0.2"
+  }
+}
