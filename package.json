@@ -4,8 +4,9 @@
   "description": "Book-A-Meal is an application that allows customers to make food orders and helps the food",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start-dev": "nodemon --exec babel-node src/server.js"
+    "start-dev": "nodemon --exec babel-node src/server.js",
+    "test": "nyc mocha --require @babel/register --require @babel/polyfill src/tests --exit",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
     "type": "git",
@@ -25,14 +26,22 @@
     "@babel/polyfill": "^7.6.0",
     "@babel/preset-env": "^7.6.3",
     "@babel/runtime": "^7.7.2",
+    "bcrypt": "^3.0.6",
     "body-parser": "^1.19.0",
+    "chai-http": "^4.3.0",
     "dotenv": "^8.2.0",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "pg": "^7.14.0"
   },
   "devDependencies": {
+    "chai": "^4.2.0",
+    "coveralls": "^3.0.9",
     "eslint": "^6.6.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.18.2",
-    "nodemon": "^1.19.4"
+    "mocha": "^6.2.2",
+    "nodemon": "^1.19.4",
+    "nyc": "^14.1.1"
   }
 }
