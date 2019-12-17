@@ -1,1 +1,3 @@
 # Meal_Booking_App
+
+[![Build Status](https://travis-ci.org/Teencodeprojects/Meal_Booking_App.svg?branch=develop)](https://travis-ci.org/Teencodeprojects/Meal_Booking_App) [![Coverage Status](https://coveralls.io/repos/github/Teencodeprojects/Meal_Booking_App/badge.svg?branch=develop)](https://coveralls.io/github/Teencodeprojects/Meal_Booking_App?branch=develop) [![Maintainability](https://api.codeclimate.com/v1/badges/68cc1eeb7d6b1cb8b221/maintainability)](https://codeclimate.com/github/Teencodeprojects/Meal_Booking_App/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/68cc1eeb7d6b1cb8b221/test_coverage)](https://codeclimate.com/github/Teencodeprojects/Meal_Booking_App/test_coverage)
