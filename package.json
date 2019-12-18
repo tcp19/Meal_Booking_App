@@ -4,7 +4,7 @@
   "description": "Book-A-Meal is an application that allows customers to make food orders and helps the food",
   "main": "server.js",
   "scripts": {
-    "start": "node src/server.js",
+    "start": "babel-node src/server.js",
     "start-dev": "nodemon --exec babel-node src/server.js",
     "test": "nyc mocha --require @babel/register --require @babel/polyfill src/tests --exit",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
