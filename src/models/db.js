@@ -1,7 +1,13 @@
 import pg from 'pg';
+import {
+    parse
+  } from 'pg-connection-string';
 import dotenv from 'dotenv';
 
 dotenv.config();
+
+const isProduction = process.env.NODE_ENV === 'production';
+const connectionString = parse(process.env.DB_URL);
 
 const connection = {
     user: process.env.DB_USER,
@@ -11,7 +17,14 @@ const connection = {
     database: process.env.DB_DATABASE
 }
 
-const pool = new pg.Pool(connection)
+let pool;
+if (isProduction) {
+  pool = new pg.Pool(connectionString);
+  console.log('production connected')
+} else {
+  pool = new pg.Pool(connection);
+  console.log('development connected')
+}
 
 pool.on('connect', () => {});
 
