@@ -7,14 +7,21 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const isProduction = process.env.NODE_ENV === 'production';
-const connectionString = parse(process.env.DATABASE_URL);
+// const connectionString = parse(process.env.DATABASEURL);
 
-const connection = {
+const connectionString =  {
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     server: process.env.DB_SERVER,
     port: process.env.DB_PORT,
     database: process.env.DB_DATABASE
+}
+const connection = {
+    user: process.env.DEV_USER,
+    password: process.env.DEV_PASSWORD,
+    server: process.env.DEV_SERVER,
+    port: process.env.DEV_PORT,
+    database: process.env.DEV_DATABASE
 }
 
 let pool;
