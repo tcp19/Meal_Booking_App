@@ -7,7 +7,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const isProduction = process.env.NODE_ENV === 'production';
-const connectionString = parse(process.env.DB_URL);
+const connectionString = parse(process.env.DATABASE_URL);
 
 const connection = {
     user: process.env.DB_USER,
