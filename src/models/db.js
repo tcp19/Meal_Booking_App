@@ -1,5 +1,5 @@
 import pg from 'pg';
-import { production, test, development } from '../config/config';
+import config from '../config/config';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -7,13 +7,13 @@ let connectionString;
 const environmentVariable = process.env.NODE_ENV;
 
 if (environmentVariable == 'test') {
-  connectionString = test;
+  connectionString = config['test'];
 
 } else if (environmentVariable == 'production') {
-  connectionString = production;
+  connectionString = config['production'];
 }
 else {
-  connectionString = development;
+  connectionString = config['development'];
 }
 const pool = new pg.Pool(
   connectionString
