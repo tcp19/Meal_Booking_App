@@ -36,6 +36,24 @@ const UserTable = async () => {
         
 }
 
+const MealTable = async () => {
+    const CreateMealTable = `CREATE TABLE IF NOT EXISTS
+    meal(
+        id SERIAL PRIMARY KEY UNIQUE,
+        mealImg VARCHAR(80) NOT NULL,
+        mealName VARCHAR(50) NOT NULL,
+        amount INT NOT NULL,
+    )`
+    try{
+        await pool.query(CreateMealTable)
+        console.log('meal table created')
+    }
+    catch(e){
+        console.log(e);
+    }
+}
+
+MealTable()
 UserTable();
 
 export default pool;
