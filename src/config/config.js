@@ -23,5 +23,5 @@ export const TEST = {
   password: process.env.TEST_PASSWORD,
   server: process.env.TEST_SERVER,
   port: process.env.TEST_PORT,
-  database: process.env.DEV_DATABASE
+  database: process.env.TEST_DATABASE
 }
