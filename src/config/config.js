@@ -12,11 +12,7 @@ module.exports = {
     database: process.env.DEV_DATABASE
   },
   test: {
-    user: process.env.TEST_USER,
-    password: process.env.TEST_PASSWORD,
-    server: process.env.TEST_SERVER,
-    port: process.env.TEST_PORT,
-    database: process.env.TEST_DATABASE
+   use_env_variable: process.env.TEST_DB_URL
   },
   production: {
     user: process.env.DB_USER,

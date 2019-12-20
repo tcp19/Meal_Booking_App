@@ -7,7 +7,7 @@ let connectionString;
 const environmentVariable = process.env.NODE_ENV;
 
 if (environmentVariable == 'test') {
-  connectionString = config['test'];
+  connectionString = config['test'].use_env_variable;
 
 } else if (environmentVariable == 'production') {
   connectionString = config['production'];
