@@ -16,7 +16,7 @@ else {
   connectionString = DEVELOPMENT;
 }
 const pool = new pg.Pool(
-  connectionString
+  { connectionString }
 );
 
 console.log(connectionString);
