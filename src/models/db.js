@@ -1,42 +1,29 @@
 import pg from 'pg';
-import {
-    parse
-  } from 'pg-connection-string';
+import { PRODUCTION, TEST, DEVELOPMENT } from '../config/config';
 import dotenv from 'dotenv';
 
 dotenv.config();
+let connectionString;
+const environmentVariable = process.env.NODE_ENV;
 
-const isProduction = process.env.NODE_ENV === 'production';
-// const connectionString = parse(process.env.DATABASEURL);
+if (environmentVariable.includes('test')) {
+  connectionString = TEST;
 
-const connectionString =  {
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    server: process.env.DB_SERVER,
-    port: process.env.DB_PORT,
-    database: process.env.DB_DATABASE
+} else if (environmentVariable.includes('production')) {
+  connectionString = PRODUCTION;
 }
-const connection = {
-    user: process.env.DEV_USER,
-    password: process.env.DEV_PASSWORD,
-    server: process.env.DEV_SERVER,
-    port: process.env.DEV_PORT,
-    database: process.env.DEV_DATABASE
+else {
+  connectionString = DEVELOPMENT;
 }
+const pool = new pg.Pool({
+  connectionString
+});
 
-let pool;
-if (isProduction) {
-  pool = new pg.Pool(connectionString);
-  console.log('production connected')
-} else {
-  pool = new pg.Pool(connection);
-  console.log('development connected')
-}
-
-pool.on('connect', () => {});
+console.log(connectionString);
+pool.on('connect', () => { });
 
 const UserTable = async () => {
-    const CreateTable = `CREATE TABLE IF NOT EXISTS
+  const CreateTable = `CREATE TABLE IF NOT EXISTS
     users(
         id SERIAL PRIMARY KEY UNIQUE,
         first_name VARCHAR(50) NOT NULL,
@@ -45,15 +32,15 @@ const UserTable = async () => {
         email VARCHAR(50) NOT NULL,
         password VARCHAR(20) NOT NULL
         )`
-        try{
-         await pool.query(CreateTable)
-         console.log('user table created')
+  try {
+    await pool.query(CreateTable)
+    console.log('user table created')
 
-        }
-        catch(e) {
-            console.log(e)
-        }
-        
+  }
+  catch (e) {
+    console.log(e)
+  }
+
 }
 
 UserTable();
