@@ -6,18 +6,18 @@ dotenv.config();
 let connectionString;
 const environmentVariable = process.env.NODE_ENV;
 
-if (environmentVariable.includes('test')) {
+if (environmentVariable == 'test') {
   connectionString = TEST;
 
-} else if (environmentVariable.includes('production')) {
+} else if (environmentVariable == 'production') {
   connectionString = PRODUCTION;
 }
 else {
   connectionString = DEVELOPMENT;
 }
-const pool = new pg.Pool({
+const pool = new pg.Pool(
   connectionString
-});
+);
 
 console.log(connectionString);
 pool.on('connect', () => { });
