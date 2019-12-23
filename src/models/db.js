@@ -1,22 +1,29 @@
 import pg from 'pg';
+import config from '../config/config';
 import dotenv from 'dotenv';
 
 dotenv.config();
+let connectionString;
+const environmentVariable = process.env.NODE_ENV;
 
-const connection = {
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    server: process.env.DB_SERVER,
-    port: process.env.DB_PORT,
-    database: process.env.DB_DATABASE
+if (environmentVariable == 'test') {
+  connectionString = config['test'].use_env_variable;
+
+} else if (environmentVariable == 'production') {
+  connectionString = config['production'];
 }
+else {
+  connectionString = config['development'];
+}
+const pool = new pg.Pool(
+  connectionString
+);
 
-const pool = new pg.Pool(connection)
-
-pool.on('connect', () => {});
+console.log(connectionString);
+pool.on('connect', () => { });
 
 const UserTable = async () => {
-    const CreateTable = `CREATE TABLE IF NOT EXISTS
+  const CreateTable = `CREATE TABLE IF NOT EXISTS
     users(
         id SERIAL PRIMARY KEY UNIQUE,
         first_name VARCHAR(50) NOT NULL,
@@ -25,15 +32,15 @@ const UserTable = async () => {
         email VARCHAR(50) NOT NULL,
         password VARCHAR(20) NOT NULL
         )`
-        try{
-         await pool.query(CreateTable)
-         console.log('user table created')
+  try {
+    await pool.query(CreateTable)
+    console.log('user table created')
 
-        }
-        catch(e) {
-            console.log(e)
-        }
-        
+  }
+  catch (e) {
+    console.log(e)
+  }
+
 }
 
 UserTable();

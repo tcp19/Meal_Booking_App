@@ -4,9 +4,12 @@
   "description": "Book-A-Meal is an application that allows customers to make food orders and helps the food",
   "main": "server.js",
   "scripts": {
-    "start": "babel-node src/server.js",
-    "start-dev": "nodemon --exec babel-node src/server.js",
-    "test": "nyc mocha --require @babel/register --require @babel/polyfill src/tests --exit",
+    "start": "cross-env NODE_ENV=production npm run build && node ./build/app.js",
+    "start-dev": "cross-env NODE_ENV=development nodemon --exec babel-node src/server.js",
+    "build": "npm run clean && npm run build-babel",
+    "clean": "rm -rf build && mkdir build",
+    "build-babel": "babel -d ./build ./src -s",
+    "test": "cross-env NODE_ENV=test nyc mocha --require @babel/register --require @babel/polyfill src/tests --exit",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
@@ -27,13 +30,15 @@
     "@babel/polyfill": "^7.6.0",
     "@babel/preset-env": "^7.6.3",
     "@babel/runtime": "^7.7.2",
-    "bcrypt": "^3.0.6",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "chai-http": "^4.3.0",
+    "cross-env": "^6.0.3",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
-    "pg": "^7.14.0"
+    "pg": "^7.14.0",
+    "pg-connection-string": "^2.1.0"
   },
   "devDependencies": {
     "chai": "^4.2.0",

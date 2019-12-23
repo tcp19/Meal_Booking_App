@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 import pool from '../models/db';
 import jsonResponse from '../helpers/jsonResponse';
 
