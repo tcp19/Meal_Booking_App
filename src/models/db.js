@@ -40,6 +40,7 @@ const MealTable = async () => {
     const CreateMealTable = `CREATE TABLE IF NOT EXISTS
     meal(
         id SERIAL PRIMARY KEY UNIQUE,
+        userId INT NOT NULL,
         mealImg VARCHAR(80) NOT NULL,
         mealName VARCHAR(50) NOT NULL,
         amount INT NOT NULL,
