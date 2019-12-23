@@ -12,7 +12,6 @@ module.exports = {
     database: process.env.DEV_DATABASE
   },
   test: {
-    use_env_variable:process.env.TEST_DB_URL,
     user: process.env.TEST_USER,
     password: process.env.TEST_PASSWORD,
     server: process.env.TEST_SERVER,
