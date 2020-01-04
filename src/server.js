@@ -7,6 +7,7 @@ import jsonResponse from './helpers/jsonResponse';
 
 // import routes
 import registerRoute from './routes/register';
+import menuRoute from './routes/menuRouter';
 
 // Configure .env
 dotenv.config();
@@ -23,6 +24,7 @@ app.get('/', (req, res) => {
   return jsonResponse.success(res, 'success', 200, 'welcome to the Meal App api');
 })
 app.use('/api/v1', registerRoute);
+app.use('/api/v1', menuRoute);
 
 
 

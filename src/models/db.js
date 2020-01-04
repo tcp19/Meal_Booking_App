@@ -43,6 +43,18 @@ const UserTable = async () => {
 
 }
 
+const menuTable = async () =>{
+  const createMenu = `CREATE TABLE IF NOT EXISTS
+    menu(
+      menu_id SERIAL PRIMARY KEY UNIQUE,
+      name VARCHAR(50) NOT NULL,
+      description VARCHAR(150) NOT NULL,
+      category VARCHAR(200) NOT NULL,
+      date VARCHAR(150) 
+    )
+  `
+}
+
 UserTable();
 
 export default pool;
